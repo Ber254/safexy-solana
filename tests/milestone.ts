@@ -19,6 +19,7 @@ import {
   LAMPORTS_PER_SOL,
   PublicKey,
   SystemProgram,
+  Transaction,
 } from "@solana/web3.js";
 import { readFileSync } from "node:fs";
 import idl from "../program/target/idl/safexy_escrow.json";
@@ -62,8 +63,16 @@ async function main() {
       programId
     )[0];
 
+  // Fund B from the deployer wallet (devnet faucet is rate-limited).
   const airdrop = async (k: PublicKey, sol: number) => {
-    const sig = await connection.requestAirdrop(k, sol * LAMPORTS_PER_SOL);
+    const tx = new Transaction().add(
+      SystemProgram.transfer({
+        fromPubkey: authority.publicKey,
+        toPubkey: k,
+        lamports: sol * LAMPORTS_PER_SOL,
+      })
+    );
+    const sig = await connection.sendTransaction(tx, [authority]);
     await connection.confirmTransaction(sig);
   };
 
