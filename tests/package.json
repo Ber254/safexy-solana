@@ -1,0 +1,16 @@
+{
+  "name": "safexy-solana-tests",
+  "private": true,
+  "scripts": {
+    "milestone": "tsx milestone.ts"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "0.32.1",
+    "@solana/web3.js": "^1.98.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.8.3"
+  }
+}

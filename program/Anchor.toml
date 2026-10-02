@@ -1,0 +1,22 @@
+[toolchain]
+package_manager = "npm"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+safexy_escrow = "3XtS8x4cttGfBK2QhbqKpbVDnon4eeQembPbxpjvtL63"
+
+[programs.devnet]
+safexy_escrow = "3XtS8x4cttGfBK2QhbqKpbVDnon4eeQembPbxpjvtL63"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "npx ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

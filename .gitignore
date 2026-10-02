@@ -1,0 +1,15 @@
+node_modules/
+target/
+dist/
+.next/
+out/
+.env
+.env.local
+.env*.local
+*.log
+.DS_Store
+.anchor/
+test-ledger/
+deploy-keypair*.json
+*-keypair.json
+!app/**/example*.json
