@@ -89,3 +89,15 @@ devnet can use short windows while production uses 48h / 60d.
 
 Each escrow is a PDA seeded `["escrow", buyer, escrow_id]` holding both its
 data and the locked lamports.
+
+## Deploying the frontend (Vercel)
+
+1. Import the repo in Vercel and set **Root Directory** to `app/`.
+2. Env vars (see `app/.env.example`):
+   - `NEXT_PUBLIC_RPC_URL` — e.g. `https://api.devnet.solana.com`
+   - `NEXT_PUBLIC_PROGRAM_ID` — program ID from `program/Anchor.toml`
+3. Deploy — the app is a standard Next.js App Router build.
+
+The keeper is a long-running process (not serverless): run it on any host
+with `SOLANA_RPC_URL` + `KEEPER_KEYPAIR` set, e.g. a small VPS, Fly.io or a
+scheduled job.
